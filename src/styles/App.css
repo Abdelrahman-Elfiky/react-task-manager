@@ -1,0 +1,347 @@
+
+
+:root {
+  --bg-color: #f7f3f0;
+  --card-bg: #ffffff;
+  --primary-purple: #7f52ff;
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+
+
+  --easy: #e6ffe6; 
+  --completed: #6cc644;
+  --medium: #fffbe6;
+  --in-progress: #ffc107;
+  --hard: #fbe6e6;
+  --pending: #dc3545;
+}
+
+
+body {
+  background-color: var(--bg-color);
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.app-container {
+  padding: 0 20px 50px 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.header-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.profile-icon-link {
+  color: #333;
+  cursor: pointer;
+}
+.profile-icon:hover {
+    color: var(--primary-purple);
+}
+
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  background-color: var(--card-bg);
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  max-width: 400px;
+  margin-bottom: 30px;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  margin-left: 10px;
+  width: 100%;
+}
+
+.task-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 25px;
+}
+
+@media (max-width: 768px) {
+  .task-list-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.task-card {
+  background-color: var(--card-bg);
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+  cursor: pointer; 
+}
+
+.task-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+.task-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  max-width: 90%;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  padding: 0;
+}
+
+.task-description {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.task-badges {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
+.difficulty-easy { background-color: var(--easy); color: #38761d; }
+.difficulty-medium { background-color: var(--medium); color: #997404; }
+.difficulty-hard { background-color: var(--hard); color: var(--pending); }
+
+.status-completed { background-color: var(--completed); color: #ffffff; }
+.status-in-progress { background-color: var(--in-progress); color: #ffffff; }
+.status-pending { background-color: var(--pending); color: #ffffff; }
+
+.task-due-date {
+    font-size: 14px;
+    color: #777;
+    margin-top: 10px;
+}
+
+
+.add-task-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.add-task-button {
+  background-color: var(--primary-purple);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0 4px 10px rgba(127, 82, 255, 0.4);
+}
+
+.add-task-button:hover {
+  background-color: #6a42e0;
+}
+
+
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.task-form label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #444;
+}
+
+.task-form input[type="text"],
+.task-form input[type="date"],
+.task-form textarea,
+.task-form select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.task-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.task-form .add-task-button {
+    margin-top: 20px;
+    width: 100%;
+}
+.profile-container {
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.profile-header-section {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 30px;
+}
+
+.profile-avatar {
+    color: var(--primary-purple);
+    margin-bottom: 10px;
+}
+
+.profile-header-section h1 {
+    margin: 5px 0 2px 0;
+    font-size: 28px;
+}
+
+.profile-role {
+    color: #888;
+    font-size: 14px;
+}
+
+.profile-details-section h3 {
+    text-align: right;
+    color: #555;
+    border-bottom: 2px solid var(--primary-purple);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    text-align: right;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.detail-icon {
+    color: var(--primary-purple);
+    margin-left: 10px;
+}
+
+.detail-item span {
+    font-size: 16px;
+    color: #333;
+}
+
+.profile-stats-section h3 {
+    text-align: right;
+    color: #555;
+    border-bottom: 2px solid var(--primary-purple);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.stat-item {
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.stat-item.completed {
+    background-color: var(--completed);
+}
+
+.stat-item.pending {
+    background-color: var(--pending);
+}
+
+.stat-item h4 {
+    font-size: 32px;
+    margin: 5px 0;
+}
+
+.stat-item p {
+    margin: 0;
+    font-size: 14px;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
