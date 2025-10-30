@@ -4,11 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-  "dev": "vite",
-  "build": "vite build",
-  "preview": "vite preview",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build", 
   "deploy": "gh-pages -d dist"
-},
+  },
+  "homepage": "https://Abdelrahman-Elfiky.github.io/react-task-manager/",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.1.0",
     "react": "^19.1.1",
